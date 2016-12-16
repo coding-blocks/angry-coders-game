@@ -1,6 +1,9 @@
+var w = .7*window.innerWidth;
+var h = window.innerHeight;
+
 var AngryCoders = AngryCoders || {};
 
-AngryCoders.game = new Phaser.Game(1080,640,Phaser.AUTO);
+AngryCoders.game = new Phaser.Game(w,h,Phaser.AUTO);
 
 
 AngryCoders.game.state.add('Boot',AngryCoders.BootState);
