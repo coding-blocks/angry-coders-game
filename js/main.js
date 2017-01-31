@@ -1,9 +1,11 @@
-var w = .7*window.innerWidth;
-var h = window.innerHeight;
+//var w = .7*window.innerWidth;
+//var h = window.innerHeight;
+var w = 800;
+var h = 600;
 
 var AngryCoders = AngryCoders || {};
 
-AngryCoders.game = new Phaser.Game(w,h,Phaser.AUTO);
+AngryCoders.game = new Phaser.Game(w,h,Phaser.AUTO,'gamediv');
 
 
 AngryCoders.game.state.add('Boot',AngryCoders.BootState);

@@ -1,0 +1,117 @@
+{
+  "blocks": [
+    {
+      "x": 400,
+      "y": 568,
+      "asset": "concreteBox",
+      "mass": 8
+    },
+    {
+      "x": 400,
+      "y": 520,
+      "asset": "concreteBox",
+      "mass": 8
+    },
+    {
+      "x": 400,
+      "y": 472,
+      "asset": "concreteBox",
+      "mass": 8
+    },
+    {
+      "x": 500,
+      "y": 568,
+      "asset": "box",
+      "mass": 3
+    },
+    {
+      "x": 500,
+      "y": 520,
+      "asset": "box",
+      "mass": 3
+    },
+    {
+      "x": 500,
+      "y": 472,
+      "asset": "box",
+      "mass": 3
+    },
+    {
+      "x": 500,
+      "y": 424,
+      "asset": "box",
+      "mass": 3
+    },
+    {
+      "x": 580,
+      "y": 568,
+      "asset": "box",
+      "mass": 3
+    },
+    {
+      "x": 580,
+      "y": 520,
+      "asset": "box",
+      "mass": 3
+    },
+    {
+      "x": 580,
+      "y": 472,
+      "asset": "box",
+      "mass": 3
+    },
+    {
+      "x": 580,
+      "y": 424,
+      "asset": "box",
+      "mass": 3
+    },
+    {
+      "x": 740,
+      "y": 568,
+      "asset": "box",
+      "mass": 3
+    },
+    {
+      "x": 740,
+      "y": 520,
+      "asset": "box",
+      "mass": 3
+    },
+    {
+      "x": 740,
+      "y": 472,
+      "asset": "box",
+      "mass": 3
+    },
+    {
+      "x": 740,
+      "y": 424,
+      "asset": "box",
+      "mass": 3
+    },
+    {
+      "x": 740,
+      "y": 376,
+      "asset": "box",
+      "mass": 3
+    }
+  ],
+  "enemies": [        
+    {
+      "x": 500,
+      "y": 376,
+      "asset": "pig"
+    },
+    {
+      "x": 580,
+      "y": 376,
+      "asset": "pig"
+    },
+    {
+      "x": 740,
+      "y": 328,
+      "asset": "pig"
+    }
+  ]
+}

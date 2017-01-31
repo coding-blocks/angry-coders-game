@@ -2,25 +2,97 @@
 <html>
 
     <head>
-        <title>Angry Coders - The Coders Game</title>
+        <title>Happy Coders - The Coders Game</title>
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
     
         <style>
             body{
-                background-color:black;
+                background-color:white;
                 padding:0px;
                 margin:0px;
+            }
+            #editor { 
+            position:absolute;
+            width:400px;
+            height: 600px;
+            margin-left:800px;      
+        }
+            button{
+                position: absolute;
+                margin-left: 800px;
+                margin-top:550px;
+                z-index: 100;
+            }
+            #reset{
+                
+                position: absolute;
+                margin-left: 860px;
+                margin-top:550px;
+                z-index: 100;
+            }
+            #gamediv{
+                width:800px;
+                height:600px;
             }
         </style>
     
     </head>
     
     <body>
+        <script src="ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8">
+        </script>
+        
+        
         <script src="js/phaser.js"></script>
         <script src="js/states/Boot.js"></script>
         <script src="js/states/Preload.js"></script>
         <script src="js/states/Game.js"></script>
-        <script src="js/main.js"></script>    
+        <script src="js/main.js"></script>   
+        
+            <div id="editor">
+                
+                var velocity = 300;
+                var angle = 45;
+                var m = 10;
+                
+                setMass(m);
+                kickBall(velocity,angle);
+            </div>
+        
+        
+        <button onclick="runcode()">
+            Run Code
+        </button>
+        
+         <button id='reset' onclick="resetGame()">
+            Reset Game
+        </button>
+    
+        
+        <script>
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/monokai");
+        editor.getSession().setMode("ace/mode/javascript");
+        </script>
+        
+        <div id="gamediv"></div>
+        
+
+        
+        <script>
+                function runcode(){
+               
+                
+                var code = editor.getValue();
+                    eval(code);
+                }
+               
+            
+        </script>
+        
+        
+    
+    
     </body>
 
 
