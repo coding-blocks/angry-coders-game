@@ -10,5 +10,5 @@ AngryCoders.game.state.add('Boot',AngryCoders.BootState);
 AngryCoders.game.state.add('Preload',AngryCoders.PreloadState);
 AngryCoders.game.state.add('Game',AngryCoders.GameState);
 
-var level = Math.floor(Math.random()*3);
+var level = Math.floor(Math.random()*5);
 AngryCoders.game.state.start('Boot');

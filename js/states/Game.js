@@ -11,14 +11,14 @@ AngryCoders.GameState ={
        
         //Set the current level to 1 if not defined.
         
-        var level_no = Math.floor(Math.random()*3);
+        var level_no = Math.floor(Math.random()*5);
         
         
         this.currentLevel = level ? level:'level'+level_no;
         
         console.log(this.currentLevel);
         
-        this.nextLevel = 'level'+(level_no+1)%3;
+        this.nextLevel = 'level'+(level_no+1)%5;
         console.log("Level gen"+this.nextLevel);
         
         
@@ -63,8 +63,10 @@ AngryCoders.GameState ={
         this.load.text('level0','assets/leveldata/level0.json');
         this.load.text('level1','assets/leveldata/level1.json');
         this.load.text('level2','assets/leveldata/level2.json');
-        
-         this.load.spritesheet('player', 'assets/images/android_spritesheet.png', 80, 100, 5);  
+        this.load.text('level3','assets/leveldata/level3.json');
+        this.load.text('level4','assets/leveldata/level4.json');
+
+        this.load.spritesheet('player', 'assets/images/android_spritesheet.png', 80, 100, 5);
         
         this.load.image('topbox','assets/images/topblock.png');
         
@@ -212,7 +214,7 @@ function resetGame(c){
 }
 
 function nextLevel(){
-    AngryCoders.game.state.start('Game',true,false,AngryCoders.GameState.nextLevel,3);
+    AngryCoders.game.state.start('Game',true,false,AngryCoders.GameState.nextLevel,5);
     
 }
 

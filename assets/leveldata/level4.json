@@ -1,0 +1,27 @@
+{
+  "blocks": [
+
+      {
+      "x": 500,
+      "y": 450,
+      "asset": "box",
+      "mass": 6
+      },
+      
+      {
+      "x": 500,
+      "y": 400,
+      "asset": "box",
+      "mass": 5
+      },
+      
+      {
+      "x": 500,
+      "y": 350,
+      "asset": "topbox",
+      "mass": 3
+      }
+    ],
+    "nextLevel":"level0.json",
+    "blockX":500
+}
