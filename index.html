@@ -26,7 +26,14 @@
             #reset{
                 
                 position: absolute;
-                margin-left: 860px;
+                margin-left: 880px;
+                margin-top:550px;
+                z-index: 100;
+            }
+            #next{
+                
+                position: absolute;
+                margin-left: 960px;
                 margin-top:550px;
                 z-index: 100;
             }
@@ -51,7 +58,16 @@
         
             <div id="editor">
                 
-                var velocity = 300;
+                function getVelocity(h){
+                    g = 1000;
+                    theta = Math.PI/4;
+                    sin = Math.sin(theta);
+                    ans = 2*g*h/ (sin*sin);
+                    
+                    return Math.sqrt(ans);
+                }
+                
+                var velocity = getVelocity(200);
                 var angle = 45;
                 var m = 10;
                 
@@ -66,6 +82,10 @@
         
          <button id='reset' onclick="resetGame()">
             Reset Game
+        </button>
+        
+        <button id='next' onclick="nextLevel()">
+            Next Level
         </button>
     
         
@@ -86,13 +106,8 @@
                 var code = editor.getValue();
                     eval(code);
                 }
-               
-            
-        </script>
-        
-        
-    
-    
+                
+        </script>    
     </body>
 
 

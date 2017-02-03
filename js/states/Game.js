@@ -1,16 +1,30 @@
+debug=false;
 var AngryCoders = AngryCoders || {};
+
+AngryCoders.worldWidth = 2000;
+AngryCoders.worldHeight = 600;
 
 AngryCoders.GameState ={
   
-    init:function(level){
+    init:function(level,chances){
         
+       
         //Set the current level to 1 if not defined.
-        this.currentLevel = level ? level:'level1';
+        
+        var level_no = Math.floor(Math.random()*3);
+        
+        
+        this.currentLevel = level ? level:'level'+level_no;
+        
+        console.log(this.currentLevel);
+        
+        this.nextLevel = 'level'+(level_no+1)%3;
+        
         
         //Gravity
         this.physics.p2.gravity.y = 1000;
         //this.physics.arcade.gravity.y = 1000;
-        
+        this.chances = this.chances? chances:3 ;
         this.blocksCG = this.physics.p2.createCollisionGroup();
         
         this.enemiesCG =
@@ -18,7 +32,13 @@ AngryCoders.GameState ={
         
         this.playerCG =
         this.physics.p2.createCollisionGroup();   
-       // this.world.setBounds(0,0,1000,800);
+        this.world.setBounds(0,0,AngryCoders.worldWidth,AngryCoders.worldHeight);
+        
+        var textstyle =  { font: "35px Arial", fill: "#ff0044" };
+        
+        this.livesText =    this.add.text(10, 10, 'Chances :'+this.chances,textstyle);
+        
+        this.livesText.fixedToCamera = true;
         
         
     },
@@ -35,9 +55,17 @@ AngryCoders.GameState ={
         this.load.image('chicken', 'assets/images/bird.png');
         this.load.image('concreteBox', 'assets/images/concrete-box.png');
         this.load.image('sky', 'assets/images/sky.png');
+        this.load.text('level0','assets/leveldata/level0.json');
         this.load.text('level1','assets/leveldata/level1.json');
-         this.load.spritesheet('player', 'assets/images/android_spritesheet.png', 80, 100, 5);    
+        this.load.text('level2','assets/leveldata/level2.json');
+        
+         this.load.spritesheet('player', 'assets/images/android_spritesheet.png', 80, 100, 5);  
+        
+        this.load.image('topbox','assets/images/topblock.png');
+        
+        this.load.image('nextBtn','assets/images/btn_next.png')
     },
+    
     
     create:function(){
         
@@ -69,13 +97,16 @@ AngryCoders.GameState ={
         this.ball = this.add.sprite(150,101,'ball');
         this.blocks.add(this.ball);
        
-        
+        /*
+        this.button = this.add.button(this.world.width - 95, this.world.height-90, 'nextBtn', this.changeLevel, this);
+        this.button.fixedToCamera = true;
+        */
         
         this.ball.body.setCollisionGroup(this.playerCG); this.ball.body.collides([this.blocksCG]);
         this.ball.scale.setTo(.75);
         this.ball.body.mass = 1;
         
-        this.floor = this.add.tileSprite(this.world.width/2,this.world.height-24,this.world.width,48,'floor');
+        this.floor = this.add.tileSprite(this.world.width/2-600,this.world.height-24,800,48,'floor');
         this.blocks.add(this.floor);
        this.floor.body.setCollisionGroup(this.blocksCG);
         this.floor.body.collides([this.blocksCG,this.playerCG,this.enemiesCG]);
@@ -86,10 +117,13 @@ AngryCoders.GameState ={
         this.loadLevel();
         
         this.game.camera.follow(this.ball);
-        this.world.setBounds(0,0,1000,800);
+        this.world.setBounds(0,0,AngryCoders.worldWidth,AngryCoders.world);
     },
     update:function(){
-        
+        if(this.chances==0){
+            alert("Game Over");
+            resetGame(3);
+        }
            
     },
     
@@ -109,17 +143,19 @@ AngryCoders.GameState ={
         
         this.ball.body.velocity.y=-v*Math.sin((angle*Math.PI)/180.0);
         //console.log("In throw ball "+xv+ xy);
+        this.livesText.setText("Chances :"+this.chances);
     },
     
     render:function(){
-        this.game.debug.spriteInfo(this.ball);
+       if(debug==true){ this.game.debug.spriteInfo(this.ball);
+        }
         /*
         this.game.debug.spriteInfo(this.ball);
         this.game.debug.pointer(this.game.input.activePointer );
         */
     },
     loadLevel:function(){
-        this.levelData = JSON.parse(this.cache.getText('level1'));
+        this.levelData = JSON.parse(this.cache.getText(this.currentLevel));
         
         this.levelData.blocks.forEach(function(element){
             this.createBlock(element);
@@ -127,8 +163,8 @@ AngryCoders.GameState ={
         
     },
     createBlock:function(blockData){
-        console.log("here");
-        var block = new Phaser.Sprite(this.game,blockData.x,blockData.y-400,blockData.asset);
+        y = this.world.height/2;
+        var block = new Phaser.Sprite(this.game,blockData.x,blockData.y,blockData.asset);
         this.blocks.add(block);
         
         block.body.mass = blockData.mass;
@@ -148,10 +184,40 @@ function kickBall(v,theta){
     AngryCoders.GameState.throwBall(v,theta);
     AngryCoders.GameState.player.animations.play('walking');
     
+    
+    
 }
 function resetBall(){
     AngryCoders.GameState.ball.position.x = 150;
 }
-function resetGame(){
-    AngryCoders.game.state.start('Game');
+function resetGame(c){
+    var chances;
+    if(c==undefined){
+     chances = AngryCoders.GameState.chances - 1;
+    }
+    else{
+        chances = c;
+    }
+    
+    var level = Math.floor(Math.random()*3);
+   level = 'level'+level; AngryCoders.game.state.start('Game',true,false,level,chances);
+    
 }
+
+function nextLevel(){
+    AngryCoders.game.state.start('Game',true,false,AngryCoders.GameState.nextLevel,3);
+}
+
+function sin(deg){
+    return Math.sin(deg*(Math.PI)/180);
+}
+function cos(deg){
+    return Math.cos((deg*Math.PI)/180);
+}
+function tan(deg){
+    return Math.tan(deg*Math.PI/180);
+}
+function sqrt(n){
+    return Math.sqrt(n);
+}
+

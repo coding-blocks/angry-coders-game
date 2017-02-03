@@ -6,9 +6,9 @@ var h = 600;
 var AngryCoders = AngryCoders || {};
 
 AngryCoders.game = new Phaser.Game(w,h,Phaser.AUTO,'gamediv');
-
-
 AngryCoders.game.state.add('Boot',AngryCoders.BootState);
 AngryCoders.game.state.add('Preload',AngryCoders.PreloadState);
 AngryCoders.game.state.add('Game',AngryCoders.GameState);
+
+var level = Math.floor(Math.random()*3);
 AngryCoders.game.state.start('Boot');

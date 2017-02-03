@@ -1,38 +1,43 @@
 {
   "blocks": [
       {
-      "x": 500,
+      "x": 400,
+      "y": 600,
+      "asset": "box",
+      "mass": 8
+      },
+      {
+      "x": 400,
       "y": 550,
       "asset": "box",
       "mass": 8
       },
       {
-      "x": 500,
+      "x": 400,
       "y": 500,
       "asset": "box",
       "mass": 7
       },
       {
-      "x": 500,
+      "x": 400,
       "y": 450,
       "asset": "box",
       "mass": 6
       },
       
       {
-      "x": 500,
+      "x": 400,
       "y": 400,
       "asset": "box",
       "mass": 5
       },
       
       {
-      "x": 500,
+      "x": 400,
       "y": 350,
       "asset": "topbox",
       "mass": 3
       }
     ],
     "nextLevel":"level2.json"
-    "blockX":500,
 }

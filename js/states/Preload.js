@@ -55,7 +55,10 @@ AngryCoders.PreloadState = {
         },
         
         startGame:function(){
-            this.game.state.start('Game');
+            
+            var level = Math.floor(Math.random()*3);
+            level = 'level'+level;
+            this.game.state.start('Game',true,false,level);
             //alert("Starting Game");
         },
     
@@ -63,7 +66,7 @@ AngryCoders.PreloadState = {
         ///Helper Functions
         addMascot:function(){
             
-            this.mascot=this.add.sprite(w-250,10,'mascot');
+            this.mascot=this.add.sprite(w-250,h-300,'mascot');
             this.mascot.scale.setTo(.5);
             
            /*
@@ -75,7 +78,7 @@ AngryCoders.PreloadState = {
         
         },
         addTitle:function(){
-            this.title = this.game.add.bitmapText(this.gameMidX,this.gameMidY-200,'carrier_command',"Happy\n\n Coders",50);
+            this.title = this.game.add.bitmapText(this.gameMidX,this.gameMidY-200,'carrier_command',"Happy\n\n Coders",40);
             this.title.anchor.setTo(.5);
         },
         addPreloadBar:function(){
@@ -95,9 +98,7 @@ AngryCoders.PreloadState = {
         },
         createGround:function(){
               this.ground = this.add.tileSprite(0,h-54,4*w,216,'tile');
-                this.ground.scale.setTo(.25);
-            
-          
+                this.ground.scale.setTo(.25); 
         }
     
         
