@@ -58,14 +58,17 @@
         
             <div id="editor">
                 
-                
-                gravity = 1000; //can't be changed
-                
+                // YOU CANNOT EDIT THIS
+                gravity = 1000;
+
+                // YOU CAN EDIT THIS IN BEGINNING
                 function getVelocity(h,range){
                     //Complete this
                 
                     return 600;
                 }
+
+                // YOU CAN EDIT THIS IN BEGINNING
                 function getAngle(h,range){
                     //Complete this    
                 
@@ -73,11 +76,14 @@
                     return 45;
                 }
             
-                
+
+                // YOU CAN EDIT THE VARIABLES HERE EVERY ATTEMPT
                 velocity = getVelocity(); 
                 angle = getAngle();
-                m = 10; //You can change this too
-                
+
+
+                //YOU CAN CHANGE THIS IN BEGINNING
+                m = 10;
                 setMass(m);
                 
                 kickBall(velocity,angle);
@@ -92,7 +98,11 @@
                 
                 //Helper Functions
                 function degreeToRadian(deg){
-                    return deg*Math.pi/180;
+                    return deg*(Math.PI/180);
+                }
+
+                function radianToDeg(rad){
+                    return rad*(180/Math.PI);
                 }
                 
                 function sin(deg){
@@ -104,6 +114,11 @@
                     
                     theta = degreeToRadian(deg);
                     return Math.sin(theta);
+                }
+                function tanInv (val) {
+                    var rad = (Math.atan(val))
+                    var deg = radianToDegree(rad)
+                    return deg;
                 }
                 function squareRoot(no){
                     return Math.sqrt(no);
