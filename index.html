@@ -58,21 +58,59 @@
         
             <div id="editor">
                 
-                function getVelocity(h){
-                    g = 1000;
-                    theta = Math.PI/4;
-                    sin = Math.sin(theta);
-                    ans = 2*g*h/ (sin*sin);
-                    
-                    return Math.sqrt(ans);
-                }
                 
-                var velocity = getVelocity(200);
-                var angle = 45;
-                var m = 10;
+                gravity = 1000; //can't be changed
+                
+                function getVelocity(h,range){
+                    //Complete this
+                
+                    return 600;
+                }
+                function getAngle(h,range){
+                    //Complete this    
+                
+                
+                    return 45;
+                }
+            
+                
+                velocity = getVelocity(); 
+                angle = getAngle();
+                m = 10; //You can change this too
                 
                 setMass(m);
+                
                 kickBall(velocity,angle);
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                //Helper Functions
+                function degreeToRadian(deg){
+                    return deg*Math.pi/180;
+                }
+                
+                function sin(deg){
+                    
+                    theta = degreeToRadian(deg);
+                    return Math.sin(theta);
+                }
+                function cos(deg){
+                    
+                    theta = degreeToRadian(deg);
+                    return Math.sin(theta);
+                }
+                function squareRoot(no){
+                    return Math.sqrt(no);
+                }
+                
+                
+                
             </div>
         
         
@@ -81,7 +119,7 @@
         </button>
         
          <button id='reset' onclick="resetGame()">
-            Reset Game
+            Reset Level
         </button>
         
         <button id='next' onclick="nextLevel()">

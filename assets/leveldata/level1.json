@@ -6,12 +6,14 @@
       "asset": "box",
       "mass": 8
       },
+      
       {
       "x": 500,
       "y": 500,
       "asset": "box",
       "mass": 7
       },
+      
       {
       "x": 500,
       "y": 450,
@@ -33,6 +35,6 @@
       "mass": 3
       }
     ],
-    "nextLevel":"level2.json"
-    "blockX":500,
+    "nextLevel":"level2.json",
+    "blockX":500
 }

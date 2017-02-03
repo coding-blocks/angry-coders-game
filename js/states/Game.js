@@ -19,6 +19,7 @@ AngryCoders.GameState ={
         console.log(this.currentLevel);
         
         this.nextLevel = 'level'+(level_no+1)%3;
+        console.log("Level gen"+this.nextLevel);
         
         
         //Gravity
@@ -34,9 +35,13 @@ AngryCoders.GameState ={
         this.physics.p2.createCollisionGroup();   
         this.world.setBounds(0,0,AngryCoders.worldWidth,AngryCoders.worldHeight);
         
-        var textstyle =  { font: "35px Arial", fill: "#ff0044" };
+        this.textStyle =  { font: "25px Arial", fill: "#ff0044" };
         
-        this.livesText =    this.add.text(10, 10, 'Chances :'+this.chances,textstyle);
+        this.livesText =    this.add.text(10, 10, 'Chances :'+this.chances,this.textStyle);
+        
+        this.distanceText = this.add.text(600,10,"Distance:  \n Height: ",this.textStyle);
+        this.distanceText.fixedToCamera = true;
+        
         
         this.livesText.fixedToCamera = true;
         
@@ -69,12 +74,6 @@ AngryCoders.GameState ={
     
     create:function(){
         
-        /*
-        for( x in this){
-            console.log(x);
-        }*/
-        console.log(this.world.width);
-        console.log(this.world.height);
         
         
         
@@ -157,15 +156,24 @@ AngryCoders.GameState ={
     loadLevel:function(){
         this.levelData = JSON.parse(this.cache.getText(this.currentLevel));
         
+        var numBlocks = 0;
+        this.range = 0;
         this.levelData.blocks.forEach(function(element){
             this.createBlock(element);
+            this.range = element.x-this.ball.x;
+            numBlocks++;
         },this);
+        
+        this.height = numBlocks*50;
+        
+        this.distanceText.setText("Distance: "+this.range+  "\n Height :"+this.height,this.textStyle);
         
     },
     createBlock:function(blockData){
         y = this.world.height/2;
         var block = new Phaser.Sprite(this.game,blockData.x,blockData.y,blockData.asset);
         this.blocks.add(block);
+        
         
         block.body.mass = blockData.mass;
         block.body.setCollisionGroup(this.blocksCG);
@@ -199,13 +207,13 @@ function resetGame(c){
         chances = c;
     }
     
-    var level = Math.floor(Math.random()*3);
-   level = 'level'+level; AngryCoders.game.state.start('Game',true,false,level,chances);
+    var level = AngryCoders.GameState.currentLevel;  AngryCoders.game.state.start('Game',true,false,level,chances);
     
 }
 
 function nextLevel(){
     AngryCoders.game.state.start('Game',true,false,AngryCoders.GameState.nextLevel,3);
+    
 }
 
 function sin(deg){
