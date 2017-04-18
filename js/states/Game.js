@@ -133,7 +133,7 @@ AngryCoders.GameState ={
     },
     jump:function(){
         this.ball.body.velocity.x = 400;
-        this.ball.body.velocity.y = 00;
+        this.ball.body.velocity.y = 0;
         
         
     },

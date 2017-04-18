@@ -1,167 +1,160 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <title>Happy Coders - The Coders Game</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
-    
-        <style>
-            body{
-                background-color:white;
-                padding:0px;
-                margin:0px;
-            }
-            #editor { 
-            position:absolute;
-            width:400px;
+<head>
+    <title>Happy Coders - The Coders Game</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+
+    <link type="text/css" rel="stylesheet" href="./css/bootstrap.css">
+    <style>
+        /*body {*/
+        /*background-color: white;*/
+        /*padding: 0px;*/
+        /*margin: 0px;*/
+        /*}*/
+
+        #editor {
+            /*position: absolute;*/
+            /*width: 400px;*/
             height: 600px;
-            margin-left:800px;      
+            /*margin-left: 800px;*/
         }
-            button{
-                position: absolute;
-                margin-left: 800px;
-                margin-top:550px;
-                z-index: 100;
-            }
-            #reset{
-                
-                position: absolute;
-                margin-left: 880px;
-                margin-top:550px;
-                z-index: 100;
-            }
-            #next{
-                
-                position: absolute;
-                margin-left: 960px;
-                margin-top:550px;
-                z-index: 100;
-            }
-            #gamediv{
-                width:800px;
-                height:600px;
-            }
-        </style>
-    
-    </head>
-    
-    <body>
-        <script src="ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8">
-        </script>
-        
-        
-        <script src="js/phaser.js"></script>
-        <script src="js/states/Boot.js"></script>
-        <script src="js/states/Preload.js"></script>
-        <script src="js/states/Game.js"></script>
-        <script src="js/main.js"></script>   
-        
+
+        /*#gamediv {*/
+        /*width: 800px;*/
+        /*height: 600px;*/
+        /*}*/
+    </style>
+
+</head>
+
+<body>
+<script src="ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8">
+</script>
+
+
+<script src="js/phaser.js"></script>
+<script src="js/states/Boot.js"></script>
+<script src="js/states/Preload.js"></script>
+<script src="js/states/Game.js"></script>
+<script src="js/main.js"></script>
+<script src="js/jquery-3.2.1.js"></script>
+<script src="js/modal.js"></script>
+<div id="readMeModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-center">Read Me</h4>
+            </div>
+            <div class="modal-body">
+                <p>gravity = 1000</p>
+                <p>mass=10</p>
+                <p>
+                    //Helper Functions<br/>
+                    function degreeToRadian(deg){<br/>
+                    &emsp;&emsp;return deg*(Math.PI/180);<br/>
+                    }
+                    <br/>
+                    function radianToDegree(rad){<br/>
+                    &emsp;&emsp;return rad*(180/Math.PI);<br/>
+                    }
+                    <br/>
+                    function sin(deg){<br/>
+                    &emsp;&emsp;theta = degreeToRadian(deg);<br/>
+                    &emsp;&emsp;return Math.sin(theta);<br/>
+                    }
+                    <br/>
+                    function cos(deg){<br/>
+                    &emsp;&emsp;theta = degreeToRadian(deg);<br/>
+                    &emsp;&emsp;return Math.sin(theta);<br/>
+                    }<br/>
+                    function tanInv (val) {<br/>
+                    &emsp;&emsp;var rad = (Math.atan(val))<br/>
+                    &emsp;&emsp;var deg = radianToDegree(rad)<br/>
+                    &emsp;&emsp;return deg;<br/>
+                    }<br/>
+                    function squareRoot(no){<br/>
+                    &emsp;&emsp;return Math.sqrt(no);<br/>
+                    }<br/>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <br>
+        <div class="col-xs-7" id="gamediv"></div>
+        <div class="col-xs-5">
             <div id="editor">
-                
-                // YOU CANNOT EDIT THIS
-                gravity = 1000;
+
 
                 // YOU CAN EDIT THIS IN BEGINNING
                 function getVelocity(h,range){
-                    //Complete this
-                
-                    return 600;
+                //Complete this
+
+                return 600;
                 }
 
                 // YOU CAN EDIT THIS IN BEGINNING
                 function getAngle(h,range){
-                    //Complete this    
-                
-                
-                    return 45;
+                //Complete this
+
+
+                return 45;
                 }
-            
+
 
                 // YOU CAN EDIT THE VARIABLES HERE EVERY ATTEMPT
-                velocity = getVelocity(); 
-                angle = getAngle();
+                velocity = getVelocity(<span id="getVelocity"></span>);
+                angle = getAngle(<span id="getAngle"></span>);
 
-
-                //YOU CAN CHANGE THIS IN BEGINNING
-                m = 10;
-                setMass(m);
-                
                 kickBall(velocity,angle);
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                //Helper Functions
-                function degreeToRadian(deg){
-                    return deg*(Math.PI/180);
-                }
-
-                function radianToDegree(rad){
-                    return rad*(180/Math.PI);
-                }
-                
-                function sin(deg){
-                    
-                    theta = degreeToRadian(deg);
-                    return Math.sin(theta);
-                }
-                function cos(deg){
-                    
-                    theta = degreeToRadian(deg);
-                    return Math.sin(theta);
-                }
-                function tanInv (val) {
-                    var rad = (Math.atan(val))
-                    var deg = radianToDegree(rad)
-                    return deg;
-                }
-                function squareRoot(no){
-                    return Math.sqrt(no);
-                }
-                
-                
-                
             </div>
-        
-        
-        <button onclick="runcode()">
-            Run Code
-        </button>
-        
-         <button id='reset' onclick="resetGame()">
-            Reset Level
-        </button>
-        
-        <button id='next' onclick="nextLevel()">
-            Next Level
-        </button>
-    
-        
-        <script>
-        var editor = ace.edit("editor");
-        editor.setTheme("ace/theme/monokai");
-        editor.getSession().setMode("ace/mode/javascript");
-        </script>
-        
-        <div id="gamediv"></div>
-        
+        </div>
+    </div>
 
-        
-        <script>
-                function runcode(){
-               
-                
-                var code = editor.getValue();
-                    eval(code);
-                }
-                
-        </script>    
-    </body>
+    <div class="row" style="margin-top: 10px;">
+        <div class="btn-group col-xs-8 col-xs-offset-4">
+            <a class="btn btn-danger btn-lg" onclick="toggleModal()">
+                ReadMe
+            </a>
+            <button class="btn btn-lg btn-danger" onclick="runcode()">
+                Run Code
+            </button>
+
+            <button class="btn btn-lg btn-danger" id='reset' onclick="resetGame()">
+                Reset Level
+            </button>
+
+            <button class="btn btn-lg btn-danger" id='next' onclick="nextLevel()">
+                Next Level
+            </button>
+        </div>
+    </div>
+</div>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.getSession().setMode("ace/mode/javascript");
+</script>
+
+
+<script>
+    function runcode() {
+
+
+        var code = editor.getValue();
+        eval(code);
+    }
+    function toggleModal() {
+        $("#readMeModal").modal("toggle");
+    }
+</script>
+</body>
 
 
 </html>
