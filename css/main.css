@@ -1,0 +1,11 @@
+.modal-dialog{
+    overflow-y: initial !important
+}
+.modal-body{
+    height: 500px;
+    overflow-y: auto;
+}
+
+#editor {
+    height: 600px;
+}

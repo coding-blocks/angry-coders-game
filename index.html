@@ -7,26 +7,7 @@
           content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
 
     <link type="text/css" rel="stylesheet" href="./css/bootstrap.css">
-    <style>
-        /*body {*/
-        /*background-color: white;*/
-        /*padding: 0px;*/
-        /*margin: 0px;*/
-        /*}*/
-
-        #editor {
-            /*position: absolute;*/
-            /*width: 400px;*/
-            height: 600px;
-            /*margin-left: 800px;*/
-        }
-
-        /*#gamediv {*/
-        /*width: 800px;*/
-        /*height: 600px;*/
-        /*}*/
-    </style>
-
+    <link type="text/css" rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
@@ -46,13 +27,18 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title text-center">Read Me</h4>
+                <h4 class="modal-title text-center">Welcome to Angry Coders</h4>
             </div>
-            <div class="modal-body"">
-                <p>gravity = 1000</p>
-                <p>mass=10</p>
-                <p>
-                    //Helper Functions<br/>
+            <div class="modal-body">
+                <p>Run Code Button evaluates your code and runs it accordingly.</p>
+                <p>Reset Level Button restarts the game for this level.</p>
+                <p>Next level Button takes you to a random next level</p>
+                <p>You need to write the code for the two functions to get Angle and Velocity
+                    at which the ball should be thrown so that it hits the bird.</p>
+                <b>Extra Information:</b>
+                <p> gravity = 1000<br/>
+                    mass=10<br/>
+                    <b>Helper Functions:</b><br/>
                     function degreeToRadian(deg){<br/>
                     &emsp;&emsp;return deg*(Math.PI/180);<br/>
                     }
@@ -92,21 +78,19 @@
             <div id="editor" style="display: none">
 
 
-                // YOU CAN EDIT THIS IN BEGINNING
+                // YOU CAN EDIT THIS IN THE BEGINNING
                 function getVelocity(h,range){
                 //Complete this
 
-                return 600;
+                    return 600;
                 }
 
-                // YOU CAN EDIT THIS IN BEGINNING
+                // YOU CAN EDIT THIS IN THE BEGINNING
                 function getAngle(h,range){
                 //Complete this
 
-
-                return 45;
+                    return 45;
                 }
-
 
                 // THE VARIABLES ARE UPDATED ACCORDING TO THE LEVEL
                 velocity = getVelocity();
@@ -138,7 +122,7 @@
 </div>
 <script>
     var editor = ace.edit("editor");
-    $("#editor").css("display","block");
+    $("#editor").css("display", "block");
     editor.setTheme("ace/theme/monokai");
     editor.getSession().setMode("ace/mode/javascript");
 </script>
