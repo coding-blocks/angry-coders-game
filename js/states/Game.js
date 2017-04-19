@@ -169,8 +169,10 @@ AngryCoders.GameState ={
         this.height = numBlocks*50;
         
         this.distanceText.setText("Distance: "+this.range+  "\n Height :"+this.height,this.textStyle);
-        
-    },
+        console.log(this.height+","+this.range);
+        $("span.ace_identifier:contains('getVelocity')").next().text("("+this.height+","+this.range);
+        $("span.ace_identifier:contains('getAngle')").next().text("("+this.height+","+this.range);
+        },
     createBlock:function(blockData){
         y = this.world.height/2;
         var block = new Phaser.Sprite(this.game,blockData.x,blockData.y,blockData.asset);
