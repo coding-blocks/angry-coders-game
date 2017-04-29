@@ -225,7 +225,7 @@ function resetGame(c) {
 }
 
 function nextLevel() {
-    AngryCoders.game.state.start('Game', true, false, AngryCoders.GameState.nextLevel, 5);
+    AngryCoders.game.state.start('Game', true, false, AngryCoders.GameState.nextLevel, 3);
 
 }
 
