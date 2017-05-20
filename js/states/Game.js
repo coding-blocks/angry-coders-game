@@ -11,7 +11,7 @@ AngryCoders.GameState = {
 
         //Set the current level to 1 if not defined.
 
-        var level_no = Math.floor(Math.random() * 5);
+        var level_no = 0;
 
 
         this.currentLevel = level ? level : 'level' + level_no;
@@ -26,20 +26,28 @@ AngryCoders.GameState = {
         this.physics.p2.gravity.y = 1000;
         //this.physics.arcade.gravity.y = 1000;
         this.chances = this.chances ? chances : 3;
+
+        //Adding blocksCG, enemiesCG and playerCG to the createCollisionGroup()
+
         this.blocksCG = this.physics.p2.createCollisionGroup();
 
-        this.enemiesCG =
-            this.physics.p2.createCollisionGroup();
+        this.enemiesCG = this.physics.p2.createCollisionGroup();
 
-        this.playerCG =
-            this.physics.p2.createCollisionGroup();
+        this.playerCG =  this.physics. p2.createCollisionGroup();
+
         this.world.setBounds(0, 0, AngryCoders.worldWidth, AngryCoders.worldHeight);
 
         this.textStyle = {font: "25px Arial", fill: "#ff0044"};
 
+        // sets the position of the text Chances
         this.livesText = this.add.text(10, 10, 'Chances :' + this.chances, this.textStyle);
 
+        // sets the position of the text Distance and Height
+
         this.distanceText = this.add.text(600, 10, "Distance:  \n Height: ", this.textStyle);
+
+        //sticking game UI to the camera that scrolls as it moves around the world.
+
         this.distanceText.fixedToCamera = true;
 
 
@@ -49,6 +57,9 @@ AngryCoders.GameState = {
     },
     preload: function () {
         console.log('Loading game assets');
+
+        //Loading all the necessary resources to the game, i.e, images, json etc
+
         this.load.image('ball', 'assets/images/ballbird.png');
         this.load.image('floor', 'assets/images/floor.png');
         this.load.image('block', 'assets/images/block_cb.png');
@@ -82,6 +93,7 @@ AngryCoders.GameState = {
 
         ///Add a group , add body and enable P2Physics
         this.blocks = this.add.group();
+        var top = this.blocks.children[0];
         this.blocks.enableBody = true;
         this.blocks.physicsBodyType = Phaser.Physics.P2JS;
 
@@ -108,6 +120,7 @@ AngryCoders.GameState = {
         this.ball.scale.setTo(.75);
         this.ball.body.mass = 1;
 
+
         this.floor = this.add.tileSprite(this.world.width / 2 - 600, this.world.height - 24, 800, 48, 'floor');
         this.blocks.add(this.floor);
         this.floor.body.setCollisionGroup(this.blocksCG);
@@ -126,8 +139,15 @@ AngryCoders.GameState = {
             alert("Game Over");
             resetGame(3);
         }
+        else if (this.ball.position.y>1800) {
+            this.chances-1;
+            resetGame(this.chances-1);
+        }
 
+    
     },
+
+
 
     setBallWeight: function (m) {
         this.ball.body.mass = m;
@@ -241,4 +261,3 @@ function tan(deg) {
 function sqrt(n) {
     return Math.sqrt(n);
 }
-

@@ -15,6 +15,8 @@ AngryCoders.BootState = {
         this.game.scale.minHeight = 360;
         this.game.scale.maxWidth = 768;
         this.game.scale.maxHeight = 1360;
+        this.scale.setScreenSize( true );
+
         this.game.scale.pageAlignHorizontally = true;
         this.game.scale.pageAlignVertically = true;
 
