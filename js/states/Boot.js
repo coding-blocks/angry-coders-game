@@ -10,15 +10,6 @@ AngryCoders.BootState = {
         this.game.stage.backgroundColor = WhiteColor;
         //Set the scaling options
        //this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-        this.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
-        this.game.scale.minWidth = 180;
-        this.game.scale.minHeight = 360;
-        this.game.scale.maxWidth = 768;
-        this.game.scale.maxHeight = 1360;
-        this.scale.setScreenSize( true );
-
-        this.game.scale.pageAlignHorizontally = true;
-        this.game.scale.pageAlignVertically = true;
 
         //physics engine P2JS
         this.game.physics.startSystem(Phaser.Physics.P2JS);
