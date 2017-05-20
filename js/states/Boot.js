@@ -8,11 +8,11 @@ AngryCoders.BootState = {
     init:function(){
         //Set the background Color
         this.game.stage.backgroundColor = WhiteColor;
-        //Set the scaling options
-       //this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 
+
+
+        //Set the scaling options
         this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-//this.scale.pageAlignHorizontally = true;
         this.scale.pageAlignVertically = true;
         this.scale.setScreenSize( true );
         this.scale.forceOrientation(true,false);
