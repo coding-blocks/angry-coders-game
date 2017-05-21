@@ -128,6 +128,12 @@
     $("#editor").css("display", "block");
     editor.setTheme("ace/theme/monokai");
     editor.getSession().setMode("ace/mode/javascript");
+    // Added font size and font family to ace editor
+    editor.setOptions({
+      fontFamily: "Fira Mono",
+      fontSize: "13pt"
+    });
+
 </script>
 
 
