@@ -2,27 +2,27 @@
   "blocks": [
       {
       "x": 400,
-      "y": 400,
+      "y": 500,
       "asset": "box",
       "mass": 3
       },
+      {
+      "x": 400,
+      "y": 450,
+      "asset": "box",
+      "mass": 3
+      },
+
       {
       "x": 400,
       "y": 400,
       "asset": "box",
       "mass": 3
       },
-      
+
       {
       "x": 400,
-      "y": 400,
-      "asset": "box",
-      "mass": 3
-      },
-    
-      {
-      "x": 400,
-      "y": 400,
+      "y": 350,
       "asset": "topbox",
       "mass": 3
       }
