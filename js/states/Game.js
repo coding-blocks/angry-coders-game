@@ -139,12 +139,29 @@ AngryCoders.GameState = {
             alert("Game Over");
             resetGame(3);
         }
+        // avoiding infinite fall
         else if (this.ball.position.y>1800) {
             this.chances-1;
             resetGame(this.chances-1);
         }
-
-    
+        //Even if both ball and the top box falls infinitely, you win
+        else if(this.ball.position.y>1800 && this.blocks.children[this.blocks.length-1].position.y>1800 ){
+              alert("You win");
+              nextLevel();
+        }
+        //checking for any other blocks has been hit by the ball or not!
+        for(i=1;i<this.blocks.length-1;i++ ){
+            if(this.blocks.children[i].position.y == this.blocks.children[0].position.y ){
+              //the base height of base block to any blocks, boundary condition.
+              //alert("true");
+              this.chances-1;
+              resetGame(this.chances-1);
+            }
+            else if (this.blocks.children[0].position.y === this.blocks.children[this.blocks.length-1].position.y || this.blocks.children[this.blocks.length-1].position.y>1800 ) {
+              alert("You win");
+              nextLevel();
+            }
+        }
     },
 
 
