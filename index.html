@@ -2,41 +2,74 @@
 <html>
 
 <head>
-    <title>Happy Coders - The Coders Game</title>
-    <meta name="viewport"
-          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+  <title>Happy Coders - The Coders Game</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no" />
 
-    <link type="text/css" rel="stylesheet" href="./css/bootstrap.css">
-    <link type="text/css" rel="stylesheet" href="./css/main.css">
+  <link type="text/css" rel="stylesheet" href="./css/bootstrap.css">
+  <link type="text/css" rel="stylesheet" href="./css/main.css">
+
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
 </head>
 
 <body>
-<script src="ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8">
-</script>
+  <script src="ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8">
+  </script>
 
-<script src="js/jquery-3.2.1.js"></script>
-<script src="js/phaser.js"></script>
-<script src="js/states/Boot.js"></script>
-<script src="js/states/Preload.js"></script>
-<script src="js/states/Game.js"></script>
-<script src="js/main.js"></script>
+  <script src="js/jquery-3.2.1.js"></script>
+  <script src="js/phaser.js"></script>
+  <script src="js/states/Boot.js"></script>
+  <script src="js/states/Preload.js"></script>
+  <script src="js/states/Game.js"></script>
+  <script src="js/main.js"></script>
 
-<script src="js/modal.js"></script>
-<div id="readMeModal" class="modal fade" role="dialog">
+  <script src="js/modal.js"></script>
+
+  <nav class="navbar-fixed-top">
+    <div class="nav-bar">
+      <div class="module left">
+        <a href="/">
+          <div class="vnu"><img class="logo logo-dark" alt="Foundry" src="https://codingblocks.com/img/cb/cb_tshirt_logo.png"></div>
+        </a>
+      </div>
+      <h2 class="vnu">Angry Coders Game</h2>
+      <div class="module widget-handle mobile-toggle right visible-sm visible-xs menuHead">
+        <i class="ti-menu"></i>
+      </div>
+      <div class="module-group right">
+        <div class="module left">
+          <ul class="menu">
+            <li style="display:inline-block">
+              <button class="btn btn-filled btn-md" onclick="toggleModal()">ReadMe</button>
+            </li>
+            <li style="display:inline-block">
+              <button class="btn btn-filled btn-md" onclick="runcode()">Run Code</button>
+            </li>
+            <li style="display:inline-block">
+              <button class="btn btn-filled btn-md" id='reset' onclick="resetGame()">Reset Level</button>
+            </li>
+            <li style="display:inline-block">
+              <button class="btn btn-filled btn-md" id='next' onclick="nextLevel()">Next Level</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="readMeModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title text-center">Welcome to Angry Coders</h4>
-            </div>
-            <div class="modal-body">
-                <p>Run Code Button evaluates your code and runs it accordingly.</p>
-                <p>Reset Level Button restarts the game for this level.</p>
-                <p>Next level Button takes you to a random next level</p>
-                <p>You need to write the code for the two functions to get Angle and Velocity
-                    at which the ball should be thrown so that it hits the bird.</p>
-                <b>Extra Information:</b>
-                <pre>
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-center">Welcome to Angry Coders</h4>
+        </div>
+        <div class="modal-body">
+          <p>Run Code Button evaluates your code and runs it accordingly.</p>
+          <p>Reset Level Button restarts the game for this level.</p>
+          <p>Next level Button takes you to a random next level</p>
+          <p>You need to write the code for the two functions to get Angle and Velocity at which the ball should be thrown so that it hits the bird.</p>
+          <b>Extra Information:</b>
+          <pre>
                     gravity = 1000
                     mass=10
                     <b>Helper Functions:</b>
@@ -68,62 +101,71 @@
                     &emsp;&emsp;return Math.sqrt(no);
                     }
                 </pre>
-            </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 
-<div class="container-fluid">
+  <div class="container-fluid">
+
     <div class="row">
-        <br>
-        <div class="col-xs-7" id="gamediv"></div>
-        <div class="col-xs-5">
-            <div id="editor" style="display: none">
-
-
-                // YOU CAN EDIT THIS IN THE BEGINNING
-                function getVelocity(h,range){
-                //Complete this
-
-                    return 600;
-                }
-
-                // YOU CAN EDIT THIS IN THE BEGINNING
-                function getAngle(h,range){
-                //Complete this
-
-                    return 45;
-                }
-
-                // THE VARIABLES ARE UPDATED ACCORDING TO THE LEVEL
-                velocity = getVelocity();
-                angle = getAngle();
-
-                kickBall(velocity,angle);
-            </div>
+        <div class="btn-group col-xs-12 menuContent">
+          <center>
+            <button class="btn btn-filled btn-md" onclick="toggleModal()">ReadMe</button>
+            <button class="btn btn-filled btn-md" onclick="runcode()">Run Code</button>
+            <button class="btn btn-filled btn-md" id='reset' onclick="resetGame()">Reset Level</button>
+            <button class="btn btn-filled btn-md" id='next' onclick="nextLevel()">Next Level</button>
+          </center>
         </div>
     </div>
 
-    <div class="row" style="margin-top: 10px;">
-        <div class="btn-group col-xs-8 col-xs-offset-4">
-            <a class="btn btn-danger btn-lg" onclick="toggleModal()">
+    <div class="row content">
+      <br>
+
+      <div class="col-xs-12 leftbox" id="gamediv"></div>
+      <div class="col-xs-12 rightbox">
+        <div id="editor" class="hover-light">
+ /* YOU CAN EDIT THIS
+ IN THE BEGINNING */
+ function getVelocity(h,range){
+   //Complete this
+   return 600;
+ }
+ /* YOU CAN EDIT THIS
+ IN THE BEGINNING */
+ function getAngle(h,range){
+   //Complete this
+   return 45;
+ }
+ /* THE VARIABLES ARE UPDATED
+ ACCORDING TO THE LEVEL */
+ velocity = getVelocity();
+ angle = getAngle();
+ kickBall(velocity,angle);
+      </div>
+    </div>
+    </div>
+
+    <!--<div class="row" style="margin-top: 10px;">
+      <div class="btn-group col-xs-8 col-xs-offset-4">
+        <a class="btn btn-danger btn-lg" onclick="toggleModal()">
                 ReadMe
             </a>
-            <button class="btn btn-lg btn-danger" onclick="runcode()">
+        <button class="btn btn-lg btn-danger" onclick="runcode()">
                 Run Code
             </button>
 
-            <button class="btn btn-lg btn-danger" id='reset' onclick="resetGame()">
+        <button class="btn btn-lg btn-danger" id='reset' onclick="resetGame()">
                 Reset Level
             </button>
 
-            <button class="btn btn-lg btn-danger" id='next' onclick="nextLevel()">
+        <button class="btn btn-lg btn-danger" id='next' onclick="nextLevel()">
                 Next Level
             </button>
-        </div>
-    </div>
-</div>
-<script>
+      </div>
+    </div>-->
+  </div>
+  <script>
     var editor = ace.edit("editor");
     $("#editor").css("display", "block");
     editor.setTheme("ace/theme/monokai");
@@ -132,12 +174,13 @@
       fontFamily: "Fira Mono",
       fontSize: "13pt"
     });
-</script>
+  </script>
 
 
-<script>
+  <script>
     function runcode() {
-        var extra = `
+      var extra =
+        `
         m = 10;
         setMass(m);
         gravity = 1000;
@@ -167,14 +210,15 @@
         }
         `;
 
-        var code = extra + editor.getValue();
-//        console.log(code);
-        eval(code);
+      var code = extra + editor.getValue();
+      //        console.log(code);
+      eval(code);
     }
+
     function toggleModal() {
-        $("#readMeModal").modal("toggle");
+      $("#readMeModal").modal("toggle");
     }
-</script>
+  </script>
 </body>
 
 
