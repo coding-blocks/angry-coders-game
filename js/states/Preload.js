@@ -78,7 +78,7 @@ AngryCoders.PreloadState = {
         
         },
         addTitle:function(){
-            this.title = this.game.add.bitmapText(this.gameMidX,this.gameMidY-200,'carrier_command',"Happy\n\n Coders",40);
+            this.title = this.game.add.bitmapText(this.gameMidX,this.gameMidY-200,'carrier_command',"Angry\n\n Coders",40);
             this.title.anchor.setTo(.5);
         },
         addPreloadBar:function(){
