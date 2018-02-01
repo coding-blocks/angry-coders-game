@@ -56,7 +56,7 @@ AngryCoders.PreloadState = {
         
         startGame:function(){
             
-            var level = Math.floor(Math.random()*5);
+            var level = Math.floor(Math.random()*6);
             level = 'level'+level;
             this.game.state.start('Game',true,false,level);
             //alert("Starting Game");
