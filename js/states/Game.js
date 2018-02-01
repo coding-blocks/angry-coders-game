@@ -18,7 +18,7 @@ AngryCoders.GameState = {
 
         console.log(this.currentLevel);
 
-        this.nextLevel = 'level' + (level_no + 1) % 5;
+        this.nextLevel = 'level' + Math.floor(Math.random()*6 +1)
         console.log("Level gen" + this.nextLevel);
 
 
@@ -135,6 +135,7 @@ AngryCoders.GameState = {
         this.world.setBounds(0, 0, AngryCoders.worldWidth, AngryCoders.world);
     },
     update: function () {
+        flag = true;
         if (this.chances == 0) {
             alert("Game Over");
             resetGame(3);
@@ -147,6 +148,7 @@ AngryCoders.GameState = {
         //Even if both ball and the top box falls infinitely, you win
         else if(this.ball.position.y>1800 && this.blocks.children[this.blocks.length-1].position.y>1800 ){
               alert("You win");
+              window.executed = false;
               nextLevel();
         }
         //checking for any other blocks has been hit by the ball or not!
@@ -156,9 +158,12 @@ AngryCoders.GameState = {
               //alert("true");
               this.chances-1;
               resetGame(this.chances-1);
+              window.executed = false;
             }
-            else if (this.blocks.children[0].position.y === this.blocks.children[this.blocks.length-1].position.y || this.blocks.children[this.blocks.length-1].position.y>1800 ) {
+            else if (this.blocks.children[0].position.y === this.blocks.children[this.blocks.length-1].position.y || this.blocks.children[this.blocks.length-1].position.y>1800 && flag) {
               alert("You win");
+              flag = false;
+              window.executed = false;
               nextLevel();
             }
         }
@@ -249,6 +254,7 @@ function resetBall() {
 }
 function resetGame(c) {
     var chances;
+    window.executed = false;
     if (c == undefined) {
         chances = AngryCoders.GameState.chances - 1;
     }
@@ -262,6 +268,7 @@ function resetGame(c) {
 }
 
 function nextLevel() {
+    window.executed = false;
     AngryCoders.game.state.start('Game', true, false, AngryCoders.GameState.nextLevel, 3);
 
 }
