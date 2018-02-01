@@ -178,6 +178,7 @@
 
 
   <script>
+    window.executed = false;
     function runcode() {
       var extra =
         `
@@ -212,7 +213,10 @@
 
       var code = extra + editor.getValue();
       //        console.log(code);
-      eval(code);
+      if(!window.executed) {
+        window.executed = true;
+        eval(code);
+      }
     }
 
     function toggleModal() {

@@ -249,6 +249,7 @@ function resetBall() {
 }
 function resetGame(c) {
     var chances;
+    window.executed = false;
     if (c == undefined) {
         chances = AngryCoders.GameState.chances - 1;
     }
