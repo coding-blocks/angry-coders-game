@@ -12,13 +12,11 @@ AngryCoders.GameState = {
         //Set the current level to 1 if not defined.
 
         var level_no = 0;
-
-
         this.currentLevel = level ? level : 'level' + level_no;
-
         console.log(this.currentLevel);
 
-        this.nextLevel = 'level' + Math.floor(Math.random()*6 +1)
+        this.nextLevel = 'level' + Math.floor(Math.random()*5);
+
         console.log("Level gen" + this.nextLevel);
 
 
