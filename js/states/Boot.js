@@ -9,7 +9,7 @@ AngryCoders.BootState = {
         //Set the background Color
         this.game.stage.backgroundColor = WhiteColor;
         //Set the scaling options
-       //this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+       this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 
         //physics engine P2JS
         this.game.physics.startSystem(Phaser.Physics.P2JS);
