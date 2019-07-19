@@ -132,7 +132,7 @@ AngryCoders.GameState = {
         this.game.camera.follow(this.ball);
         this.world.setBounds(0, 0, AngryCoders.worldWidth, AngryCoders.world);
     },
-    update: function () {
+    update: function () {//i've changed this function
         flag = true;
         if (this.chances == 0) {
             alert("Game Over");
@@ -143,27 +143,35 @@ AngryCoders.GameState = {
             this.chances-1;
             resetGame(this.chances-1);
         }
-        //Even if both ball and the top box falls infinitely, you win
-        else if(this.ball.position.y>1800 && this.blocks.children[this.blocks.length-1].position.y>1800 ){
-              alert("You win");
-              window.executed = false;
-              nextLevel();
+        //if top block fell
+        else if(this.blocks.children[this.blocks.length-1].position.y>1800 ){
+            flg=true;
+            for(i=1;i<this.blocks.length-1;i++ ){
+                if(this.blocks.children[i].position.y == this.blocks.children[0].position.y ){
+                  //if any other block fell too
+                  flg=false;
+                  break;
+
+                  
+                }
+            }
+                if(flg==false){
+                    //if any other block fell...reset
+                  this.chances-1;
+                  resetGame(this.chances-1);
+                  window.executed = false;
+                }else{
+                    //else you win..congrats
+                  alert("You win");
+                  window.executed = false;
+                  nextLevel();
+                }
         }
-        //checking for any other blocks has been hit by the ball or not!
-        for(i=1;i<this.blocks.length-1;i++ ){
-            if(this.blocks.children[i].position.y == this.blocks.children[0].position.y ){
-              //the base height of base block to any blocks, boundary condition.
-              //alert("true");
-              this.chances-1;
-              resetGame(this.chances-1);
-              window.executed = false;
-            }
-            else if (this.blocks.children[0].position.y === this.blocks.children[this.blocks.length-1].position.y || this.blocks.children[this.blocks.length-1].position.y>1800 && flag) {
-              alert("You win");
-              flag = false;
-              window.executed = false;
-              nextLevel();
-            }
+        //if top block didnt fell...but any other block happened to do any stuff..just reset
+        else{
+            this.chances-1;
+            resetGame(this.chances-1);
+            window.executed = false;
         }
     },
 
