@@ -543,7 +543,7 @@ nav .cart-overview a {
   color: #fff;
 }
 
-@media all and (max-width: 990px) {
+@media all and (max-width: 1155px) {
   .offscreen-container {
     width: 100vw;
   }
@@ -556,8 +556,18 @@ nav .cart-overview a {
     transform: none !important;
   }
 }
+div.row.content{
+  z-index : -1;
+}
 
-@media all and (max-width: 990px) {
+.ace_content{
+  cursor: text;
+}
+
+@media all and (max-width: 1155px) {
+  #gamediv canvas{
+    margin: auto;
+  }
   nav.fixed {
     position: absolute !important;
     opacity: 1 !important;
@@ -799,7 +809,7 @@ nav.transparent {
   visibility: visible;
 }
 
-@media all and (max-width: 990px) {
+@media all and (max-width: 1155px) {
   nav.transparent .nav-open {
     background: #fff;
   }
@@ -1254,7 +1264,7 @@ h1.large {
   font-weight: 100;
 }
 
-@media all and (max-width: 990px) {
+@media all and (max-width: 1155px) {
   h1.large {
     font-size: 56px;
     line-height: 64px;
@@ -1543,7 +1553,7 @@ ul.lead li {
 .menuContent{
   display: none;
 }
-@media (max-width: 1023px){
+@media (max-width: 1155px){
 
   .content {
     display: block;
