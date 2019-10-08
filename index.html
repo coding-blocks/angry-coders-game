@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
 </head>
 
-<body>
+<body onclick="requestFullScreen()">
   <script src="ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8">
   </script>
 
@@ -223,6 +223,17 @@
       $("#readMeModal").modal("toggle");
     }
   </script>
+    <script>
+   function requestFullScreen(){
+    var element = document.documentElement
+    if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullScreen) {
+        element.webkitRequestFullScreen();
+    }
+    l('Fullscreen Mode entered','internal');
+}
+</script>
 </body>
 
 
